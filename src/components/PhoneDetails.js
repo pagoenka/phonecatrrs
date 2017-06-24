@@ -4,7 +4,20 @@ import '../styles/app.css';
 class PhoneDetails extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            currentImage : ''
+        };
     }
+
+    //https://github.com/uberVU/react-guide/blob/master/props-vs-state.md
+    //remember
+    changeCurrentImage = function(i) {
+        //Use set state only otherwise render is not called again
+        this.setState({
+                currentImage: this.props.details.images[i]
+        });
+    };
+
     //remember
     static defaultProps = {
         details: {
@@ -22,19 +35,32 @@ class PhoneDetails extends Component {
             availability: []
         }
     };
-
+    //https://stackoverflow.com/questions/32414308/updating-state-on-props-change-in-react-form
+    componentWillReceiveProps = function(nextProps) {
+        this.setState({
+            currentImage: nextProps.details.images[0]
+        });
+    };
     render() {
         const { details} = this.props;
+
+        //Remember
+        //setState(...): Cannot update during an existing state transition
+        //Don't change the props/state here, render should be pure function
+
+        console.log(this.state.currentImage);
+
         let phoneImageList = [];
         for (var i=0; i < details.images.length; i++) {
             phoneImageList.push(<li key={details.images[i]}>
-                <img src={'/' + details.images[i]}/>
+                {/* if you don't bind  this here, you will have to bind in constructor*/}
+                <img src={'/' + details.images[i]} onClick={this.changeCurrentImage.bind(this, i)}/>
             </li>);
         }
         return(
             <div>
                 <div className='phone-images'>
-                    <img className="phone" src={details.currentImage}/>
+                    <img className="phone" src={'/'+ this.state.currentImage}/>
                 </div>
                 <h1>{details.name}</h1>
                 <p>{details.description}</p>

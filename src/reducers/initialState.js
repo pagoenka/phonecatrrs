@@ -1,4 +1,6 @@
 export default {
     phones: [],
-    selectedPhone: {}
+    selectedPhone: {},
+    filterText: '',
+    sortBy: 'alphabetically'
 };
