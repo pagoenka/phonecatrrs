@@ -51,7 +51,7 @@ PhoneListContainer.propTypes = {
 
 function getPhoneList(phones, sortBy, filterText){
 
-     if(undefined != filterText) {
+     if(undefined != filterText && '' != filterText) {
          let filteredPhones = [];
          phones.forEach(function(phone) {
              if (phone.name.toLowerCase().
