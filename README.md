@@ -1,8 +1,7 @@
 # PhonecatRRS (React + Redux + Saga)
-================================================================================================
 
 -----------------------------------------------------------------------
-###Phonecat similar to Angularjs [phonecat](https://github.com/angular/angular-phonecat) in Reactjs using Redux and Saga
+Phonecat similar to Angularjs [phonecat](https://github.com/angular/angular-phonecat) in Reactjs using Redux and Saga
 -----------------------------------------------------------------------
 
 
